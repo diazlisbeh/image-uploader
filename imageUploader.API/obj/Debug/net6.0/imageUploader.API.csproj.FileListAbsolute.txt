@@ -4,7 +4,6 @@
 /home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/bin/Debug/net6.0/imageUploader.API.deps.json
 /home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/bin/Debug/net6.0/imageUploader.API.runtimeconfig.json
 /home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/bin/Debug/net6.0/imageUploader.API.dll
-/home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/bin/Debug/net6.0/ref/imageUploader.API.dll
 /home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/bin/Debug/net6.0/imageUploader.API.pdb
 /home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/bin/Debug/net6.0/Azure.Core.dll
 /home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/bin/Debug/net6.0/Azure.Storage.Blobs.dll
@@ -41,3 +40,9 @@
 /home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/bin/Debug/net6.0/System.Text.Encodings.Web.dll
 /home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/bin/Debug/net6.0/System.Text.Json.dll
 /home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
+/home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/obj/Debug/net6.0/staticwebassets/msbuild.imageUploader.API.Microsoft.AspNetCore.StaticWebAssets.props
+/home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/obj/Debug/net6.0/staticwebassets/msbuild.build.imageUploader.API.props
+/home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.imageUploader.API.props
+/home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.imageUploader.API.props
+/home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/obj/Debug/net6.0/staticwebassets.pack.json
+/home/lisbeth/Challenges/imageUploader/imageUploader/imageUploader.API/obj/Debug/net6.0/refint/imageUploader.API.dll

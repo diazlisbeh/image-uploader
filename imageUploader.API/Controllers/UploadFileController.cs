@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using imageUploader.API.Services;
 using imageUploader.API.Hubs;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.Cors;
 
 namespace imageUploader.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[EnableCors("AllowAllOrigins")]
 public class UploadFileController : ControllerBase
 {
     private readonly IUploadFileService _uploadFileService;
