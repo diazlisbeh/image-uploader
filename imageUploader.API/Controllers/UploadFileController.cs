@@ -25,11 +25,7 @@ public class UploadFileController : ControllerBase
     {
         var result = await _uploadFileService.UploadFileAsync(file);
 
-        for (int i = 0; i <= 100; i++)
-        {
-            await _hubContext.Clients.All.SendAsync("ReceiveProgressUpdate", i);
-            await Task.Delay(100);
-        }
+
         return Ok(result);
     }
 }

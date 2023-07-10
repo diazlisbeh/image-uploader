@@ -15,9 +15,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(policyName, builder =>
     {
-        builder.AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
+        builder.AllowAnyHeader()
+                      .AllowAnyMethod()
+                      .SetIsOriginAllowed((host) => true)
+                      .AllowCredentials();
     });
 });
 
@@ -40,8 +41,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseRouting();
 
+
+app.UseRouting();
 app.UseCors(policyName);
 app.UseAuthorization();
 
@@ -50,7 +52,6 @@ app.UseEndpoints(endpoints =>
     endpoints.MapHub<ProgressHub>("/progressHub");
     endpoints.MapControllers();
 });
-
 
 app.MapControllers();
 

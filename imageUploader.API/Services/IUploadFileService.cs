@@ -1,7 +1,9 @@
+using imageUploader.API.Models;
+
 namespace imageUploader.API.Services
 {
     public interface IUploadFileService
     {
-        Task<string> UploadFileAsync(IFormFile file);
+        Task<Image> UploadFileAsync(IFormFile file);
     }
 }

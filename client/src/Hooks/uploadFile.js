@@ -4,39 +4,29 @@ import { Context } from "../Context/Context";
 const useUploadFile = () => {
     // const url = import.meta.env.URL;
     const url = 'https://localhost:7092/UploadFile';
-    const [file, setFile] = React.useState(null);
-    const {setLoading, setImageSrc,setError,setCompleted} = useContext(Context);
+    const {setLoading,imageSrc, setImageSrc,setError,setCompleted} = useContext(Context);
 
     const uploadFile = async (formData) => {
-        
-                setLoading(true)
+            setLoading(true);
+
+        try{
             const response = await fetch(url,{
                 method: 'POST',
                 body: formData
-            }).then(res =>{
-                res.text();
-            }).then(data => {
-                setImageSrc(data)
-                setLoading(false)
-                setCompleted(true)
-                console.log(data)
-            }).catch(err => {
-                setError(true)
-                console.log(err)
-            })
-
-            // if(response.ok){
-                // setLoading(true)
-                // const data = await response.text();
-                // setLoading(false)
-                // setImageSrc(data)
-                // console.log(data)
-            // }else{
-                // setError(true)
-            // }
-        
+            });
             
-        
+            const data = await response.json();
+            console.log(data)
+            setImageSrc(data)
+            setLoading(false)
+            setCompleted(true)
+            console.log(imageSrc)
+
+        }catch(err){
+            setError(true)
+            console.log(err)
+        }
+
     }
     return {uploadFile}
 }

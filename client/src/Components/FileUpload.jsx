@@ -1,13 +1,15 @@
 import React from "react";
-import { useState,useContext } from "react";
+import { useState,useContext,useEffect } from "react";
 import { Context } from "../Context/Context";
 import useUploadFile from "../Hooks/uploadFile";
+import useProgressHub from "../Hooks/progressHub";
 
 const FileUpload = () => {
     const [imageSrc, setImageSrc] = useState("https://diazsa.blob.core.windows.net/images/image.svg");
     const {uploadFile} = useUploadFile();
     const [file, setFile] = useState(null);
-    const {loading, setLoading,completed,setCompleted} = useContext(Context);
+    const {setTotalBytes} = useContext(Context);
+    const {progressHub} = useProgressHub();
     
     const onDrop = (e) => {
         e.preventDefault();
@@ -17,6 +19,8 @@ const FileUpload = () => {
         let reader = new FileReader();
         reader.onload = function(e){
             setImageSrc(e.target.result);   
+            console.log(e.total);
+            setTotalBytes(e.total);
         }
         reader.readAsDataURL(e.dataTransfer.files[0]);
       
@@ -24,7 +28,6 @@ const FileUpload = () => {
 
     const dragenter = (e) => {
         e.preventDefault();
-        // console.log(e.dataTransfer.files);
     }
 
     const testClick = () => {
@@ -33,9 +36,10 @@ const FileUpload = () => {
         uploadFile(formData);
     }
 
-    const testClick2 = () => {
-        setLoading(true);
-    }
+    useEffect(() => {
+       progressHub();
+    }, []);
+
 
     return(
         <>
@@ -66,8 +70,7 @@ const FileUpload = () => {
             </div>
             <button onClick={testClick}
             type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Yellow</button>
-            <button onClick={testClick2}
-            type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Holaaaa</button>
+           
         </>
     );
 }

@@ -13,6 +13,7 @@ function App() {
     {(!loading && !completed) && <FileUpload/>}
       {(loading && !completed) && <Loading/>} 
       {(completed && !loading) && <CompleteUpload/>}
+      {/* <Loading/> */}
     </>
   )
 }

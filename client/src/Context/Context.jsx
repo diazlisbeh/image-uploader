@@ -8,8 +8,21 @@ function ContextProvider({children}) {
     const [imageSrc, setImageSrc] = useState('');
     const [completed, setCompleted] = useState(false);
     const [error, setError] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const [totalBytes, setTotalBytes] = useState(0);
 
-    return<Context.Provider value={{loading, setLoading, imageSrc, setImageSrc,error,setError,completed,setCompleted}}>{children}</Context.Provider>
+    return<Context.Provider value={{loading, 
+                                    setLoading, 
+                                    imageSrc, 
+                                    setImageSrc,
+                                    error,
+                                    setError,
+                                    completed,
+                                    setCompleted,
+                                    progress,
+                                    setProgress,
+                                    totalBytes,
+                                    setTotalBytes}}>{children}</Context.Provider>
 }
 
 export { Context,ContextProvider};
