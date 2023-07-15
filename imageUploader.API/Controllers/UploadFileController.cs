@@ -25,7 +25,6 @@ public class UploadFileController : ControllerBase
     {
         var result = await _uploadFileService.UploadFileAsync(file);
 
-
         return Ok(result);
     }
 }

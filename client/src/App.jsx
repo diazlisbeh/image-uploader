@@ -6,7 +6,7 @@ import { ContextProvider,Context } from './Context/Context'
 import { useContext } from 'react'
 
 function App() {
-  const {loading,completed} = useContext(Context); 
+  const {loading,completed,totalBytes} = useContext(Context); 
 
   return (
     <>

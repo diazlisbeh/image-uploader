@@ -5,24 +5,25 @@ import useUploadFile from "../Hooks/uploadFile";
 import useProgressHub from "../Hooks/progressHub";
 
 const FileUpload = () => {
-    const [imageSrc, setImageSrc] = useState("https://diazsa.blob.core.windows.net/images/image.svg");
+    // const [imageSrc, setImageSrc] = useState("https://diazsa.blob.core.windows.net/images/image.svg");
     const {uploadFile} = useUploadFile();
     const [file, setFile] = useState(null);
-    const {setTotalBytes} = useContext(Context);
+    const {imageSrc,setImageSrc,progress,setProgress} = useContext(Context);
     const {progressHub} = useProgressHub();
+    const [totalBytes, setTotalBytes] = useState(0);
     
     const onDrop = (e) => {
         e.preventDefault();
-
+        
         setFile(e.dataTransfer.files[0]);
-
+       
         let reader = new FileReader();
         reader.onload = function(e){
             setImageSrc(e.target.result);   
-            console.log(e.total);
             setTotalBytes(e.total);
         }
         reader.readAsDataURL(e.dataTransfer.files[0]);
+        // setTotalBytes(e.dataTransfer.files[0].size);
       
     }
 
@@ -33,12 +34,13 @@ const FileUpload = () => {
     const testClick = () => {
         const formData = new FormData();
         formData.append('file',file);
+        console.log(totalBytes);
         uploadFile(formData);
     }
 
     useEffect(() => {
-       progressHub();
-    }, []);
+       progressHub(totalBytes,progress,setProgress);
+    }, [totalBytes]);
 
 
     return(

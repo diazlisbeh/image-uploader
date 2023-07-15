@@ -5,7 +5,7 @@ const Context = React.createContext();
 
 function ContextProvider({children}) {
     const [loading, setLoading] = useState(false);
-    const [imageSrc, setImageSrc] = useState('');
+    const [imageSrc, setImageSrc] = useState("https://diazsa.blob.core.windows.net/images/image.svg");
     const [completed, setCompleted] = useState(false);
     const [error, setError] = useState(false);
     const [progress, setProgress] = useState(0);

@@ -4,18 +4,26 @@ import { Context } from "../Context/Context";
 
 const useProgressHub = () => {
 
-    const {progress, setProgress} = useContext(Context);
+    // const {totalBytes,setProgress,progress} = useContext(Context);
+    // const [progress, setProgress] = React.useState(0);
 
-    const progressHub = () => {
+   
+
+    const progressHub = (totalBytes,progress,setProgress) => {
         const connection = new HubConnectionBuilder()
         .withUrl("https://localhost:7092/progressHub")
         .build();
 
     connection.start()
         .then(() =>{
-            connection.on("ReceiveProgressUpdate",(progress) =>  {
-                setProgress(progress);
-                console.log(progress);
+            connection.on("progress",(progressAsync) =>  {
+               
+                let percentage = (progressAsync * 100) / totalBytes;
+                if(percentage !== Infinity && percentage !== isNaN){
+                    // console.log(Math.round( percentage))
+                    setProgress( percentage);
+                }
+                
             });
         }).catch((err) => console.log(err));
     }

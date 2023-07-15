@@ -26,10 +26,11 @@ public class UploadFileService : IUploadFileService
         var blobClient = blobContainerClient.GetBlobClient(file.FileName);
 
 
-        await blobClient.UploadAsync(file.OpenReadStream(), true);
-        _ = blobClient.UploadAsync(file.OpenReadStream(), new BlobUploadOptions
+        // await blobClient.UploadAsync(file.OpenReadStream(), true);
+
+        _ = await blobClient.UploadAsync(file.OpenReadStream(), new BlobUploadOptions
         {
-            ProgressHandler = new Progress<long>(progress => _hubContext.Clients.All.SendAsync("ReceiveProgressUpdate", progress))
+            ProgressHandler = new Progress<long>(progress => _hubContext.Clients.All.SendAsync("progress", progress))
         });
 
         var response = new Image
