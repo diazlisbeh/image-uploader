@@ -6,7 +6,7 @@ const Loading = () => {
 
     const {progress} = useContext(Context);
 
-    useEffect(() => { console.log(Math.round(progress))      }, [progress]);   
+    useEffect(() => {  }, [progress]);   
 
     return(
         <>

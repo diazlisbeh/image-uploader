@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import { Context } from "../Context/Context";
 
 const useUploadFile = () => {
-    // const url = import.meta.env.URL;
-    const url = 'https://localhost:7092/UploadFile';
-    const {setLoading,imageSrc, setImageSrc,setError,setCompleted} = useContext(Context);
+    const url = import.meta.env.VITE_URL;
+    const {setLoading, setImageSrc,setError,setCompleted} = useContext(Context);
 
     const uploadFile = async (formData) => {
             setLoading(true);
@@ -16,17 +15,13 @@ const useUploadFile = () => {
             });
             
             const data = await response.json();
-            console.log(data)
             setImageSrc(data)
             setLoading(false)
             setCompleted(true)
-            console.log(imageSrc)
-
         }catch(err){
             setError(true)
             console.log(err)
         }
-
     }
     return {uploadFile}
 }
