@@ -2,6 +2,7 @@ import { HubConnectionBuilder } from "@microsoft/signalr";
 
 const useProgressHub = () => {
     const urlhub = import.meta.env.VITE_URL_HUB;
+   
     const progressHub = (totalBytes,setProgress) => {
         const connection = new HubConnectionBuilder()
         .withUrl(urlhub)
@@ -11,8 +12,10 @@ const useProgressHub = () => {
         .then(() =>{
             connection.on("progress",(progressAsync) =>  {
                 let percentage = (progressAsync * 100) / totalBytes;
+               
                 if(percentage !== Infinity && percentage !== isNaN){
                     setProgress( percentage);
+                    
                 }
             });
         }).catch((err) => console.log(err));

@@ -6,7 +6,7 @@ const Loading = () => {
 
     const {progress} = useContext(Context);
 
-    useEffect(() => {  }, [progress]);   
+    useEffect(() => { }, [progress]);   
 
     return(
         <>

@@ -50,7 +50,7 @@ const FileUpload = () => {
     }
 
     useEffect(() => {
-       progressHub(totalBytes,progress,setProgress);
+       progressHub(totalBytes,setProgress);
     }, [totalBytes]);
 
 
