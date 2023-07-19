@@ -6,13 +6,13 @@ const useUploadFile = () => {
     const {setLoading, setImageSrc,setError,setCompleted} = useContext(Context);
 
     const uploadFile = async (formData) => {
-            setLoading(true);
 
         try{
             const response = await fetch(url,{
                 method: 'POST',
                 body: formData
             });
+            setLoading(true);
             
             const data = await response.json();
             setImageSrc(data)
@@ -21,6 +21,7 @@ const useUploadFile = () => {
         }catch(err){
             setError(true)
             console.log(err)
+            console.log("Error en la subida del archivo" )
         }
     }
     return {uploadFile}
